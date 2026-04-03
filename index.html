@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ألغاز الهبل | تحدي العباقرة</title>
+  <!-- Tailwind CSS + Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white font-tajawal min-h-screen flex items-center justify-center p-4">
+
+  <div class="w-full max-w-3xl mx-auto transition-all duration-300">
+    <!-- شاشة البداية -->
+    <div id="startScreen" class="glass-card rounded-3xl p-8 shadow-2xl text-center border border-white/20 backdrop-blur-sm transition-all duration-500">
+      <div class="mb-6">
+        <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-amber-400 to-rose-500 bg-clip-text text-transparent drop-shadow-lg">ألغاز الهبل</h1>
+        <p class="text-gray-300 mt-3 text-lg">اختبر ذكاءك .. وخلي عقلك يلعب!</p>
+      </div>
+      <div class="my-10">
+        <div class="relative w-40 h-40 mx-auto mb-8">
+          <div class="absolute inset-0 bg-amber-500/20 rounded-full blur-2xl animate-pulse"></div>
+          <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-xl">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="8 6"/>
+            <text x="50" y="67" text-anchor="middle" fill="#fbbf24" font-size="44" font-weight="bold">؟</text>
+          </svg>
+        </div>
+        <div class="space-y-4">
+          <label class="block text-right text-gray-200 font-medium pr-2">✨ أدخل اسمك العبقري</label>
+          <input type="text" id="playerNameInput" maxlength="20" placeholder="مثال: العبقرية" class="w-full bg-gray-800/70 border border-gray-600 rounded-xl py-3 px-5 text-white text-center text-lg focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+          <button id="startGameBtn" class="mt-4 w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold py-3 rounded-xl text-xl shadow-lg transition transform hover:scale-105 active:scale-95">🚀 ابدأ اللعبة</button>
+        </div>
+      </div>
+      <div class="text-xs text-gray-500 mt-6">15 مرحلة | 3 قلوب | تحدى أصدقائك</div>
+    </div>
+
+    <!-- واجهة اللعبة -->
+    <div id="gameScreen" class="hidden">
+      <div class="glass-card rounded-3xl p-5 md:p-7 shadow-2xl border border-white/10 backdrop-blur-sm relative overflow-hidden">
+        <div class="flex flex-wrap justify-between items-center mb-6 pb-3 border-b border-white/20">
+          <div class="flex items-center gap-3 bg-black/40 px-4 py-2 rounded-full">
+            <span class="text-amber-400 text-xl">🧠</span>
+            <span id="playerNameDisplay" class="font-bold text-lg text-white">اللاعب</span>
+          </div>
+          <div class="flex items-center gap-2 bg-black/40 px-4 py-2 rounded-full">
+            <span class="text-gray-300 text-sm">❤️ الصحة</span>
+            <div id="heartsContainer" class="flex gap-1 text-2xl">❤️❤️❤️</div>
+          </div>
+          <div class="bg-black/40 px-4 py-2 rounded-full text-sm font-mono">
+            <span id="levelCounter" class="text-amber-300 font-bold">1</span><span class="text-gray-400"> / 15</span>
+          </div>
+        </div>
+
+        <div class="relative mb-5 flex justify-center">
+          <div class="w-full max-w-md rounded-2xl overflow-hidden bg-gray-800/60 shadow-inner border border-gray-700">
+            <img id="levelImage" src="" alt="صورة المرحلة" class="w-full h-56 object-cover transition-all duration-300">
+          </div>
+        </div>
+
+        <div class="text-center my-4 px-2">
+          <h2 id="questionText" class="text-2xl md:text-3xl font-bold leading-tight text-amber-100">سؤال المرحلة</h2>
+        </div>
+
+        <div id="optionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6"></div>
+        <div id="feedbackMsg" class="text-center text-md font-medium py-2 h-12 transition-all"></div>
+        <div class="text-center text-gray-500 text-xs mt-2">⭐ اختر الإجابة الصحيحة</div>
+      </div>
+    </div>
+
+    <!-- شاشة Game Over -->
+    <div id="gameOverOverlay" class="hidden fixed inset-0 flex items-center justify-center z-50 p-4 bg-black/80 backdrop-blur-md rounded-3xl" style="margin:0; backdrop-filter: blur(8px);">
+      <div class="bg-gray-900/95 border border-red-500 rounded-2xl p-8 text-center max-w-sm w-full shadow-2xl animate-bounceIn">
+        <div class="text-7xl mb-3">💀</div>
+        <h2 class="text-3xl font-bold text-red-400">انتهت اللعبة</h2>
+        <p class="text-gray-300 mt-2">للأسف ضاعت كل القلوب 💔</p>
+        <button id="restartFromGameOverBtn" class="mt-6 bg-gradient-to-r from-red-600 to-orange-600 hover:brightness-110 text-white font-bold py-2 px-6 rounded-xl text-lg transition transform hover:scale-105">🔄 إعادة المحاولة من البداية</button>
+      </div>
+    </div>
+
+    <!-- شاشة الفوز -->
+    <div id="winOverlay" class="hidden fixed inset-0 flex items-center justify-center z-50 p-4 bg-black/80 backdrop-blur-md rounded-3xl">
+      <div class="bg-gray-900/95 border border-amber-400 rounded-2xl p-8 text-center max-w-sm w-full shadow-2xl animate-bounceIn">
+        <div class="text-7xl mb-3">🏆🎉</div>
+        <h2 class="text-3xl font-bold text-amber-400">عبقري! 🧠</h2>
+        <p class="text-gray-200 mt-2">لقد أكملت جميع المراحل الـ 15 بنجاح!</p>
+        <button id="restartFromWinBtn" class="mt-6 bg-gradient-to-r from-amber-500 to-yellow-600 hover:brightness-110 text-white font-bold py-2 px-6 rounded-xl text-lg transition transform hover:scale-105">🎮 العب من جديد</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
