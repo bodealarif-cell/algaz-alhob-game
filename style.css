@@ -1,0 +1,106 @@
+/* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+}
+
+.glass-card {
+  background: rgba(15, 25, 35, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* تأثير الاهتزاز */
+.shake-effect {
+  animation: shake 0.4s ease-in-out 0s 2;
+  background-color: rgba(220, 38, 38, 0.2);
+  border-color: #ef4444 !important;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* تأثير الانتقال بين المراحل */
+.level-transition {
+  animation: fadeSlide 0.3s ease-out;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ظهور بطاقات الإجابات */
+.option-btn {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.option-btn:hover {
+  transform: scale(1.02);
+  background-color: rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+}
+
+/* تأثير bounce للشاشات المنبثقة */
+.animate-bounceIn {
+  animation: bounceIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* تخصيص أزرار الخيارات */
+.btn-option {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: 0.75rem 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.btn-option:active {
+  transform: scale(0.97);
+}
+
+/* استجابة للهواتف */
+@media (max-width: 640px) {
+  .glass-card {
+    padding: 1.25rem;
+  }
+  .btn-option {
+    padding: 0.6rem 0.3rem;
+    font-size: 0.95rem;
+  }
+  #levelImage {
+    height: 180px;
+  }
+}
