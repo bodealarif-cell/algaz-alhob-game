@@ -1,23 +1,21 @@
-// -------------------- الأسئلة المعدلة --------------------
 const levelsData = [
-  { id: 1, question: "لو في سلحفاة دخلت السباق وسبقت المركز الثاني ، ففي أي مركز ستكون؟", options: ["الأول", "الثاني", "الثالث", "الرابع"], correct: 1, image: "https://i.ibb.co/TDXqdZgF/level01-cheetah-race.jpg" },
-  { id: 2, question: "إذا أطفأت شمعتين من أصل 3 في غرفة مغلقة، كم شمعة يتبقى معك؟", options: ["1", "2", "3", "ولا واحدة"], correct: 2, image: "https://i.ibb.co/LdRzGptw/level02-candles.jpg" }, // الإجابة الصحيحة هي 3 (index 2)
-  { id: 3, question: "كم مرة تتطابق عقارب الساعة في اليوم الواحد (24 ساعة)؟", options: ["22", "24", "12", "مرة واحدة"], correct: 0, image: "https://i.ibb.co/wNVfJBHL/level03-clock.jpg" },
-  { id: 4, question: "يا دكتور الحاله دي وصلت من شويه ممكن تشخصها", options: ["كسر في الكعبرة", "نقص في الرسغ", "زيادة سلاميات", "دا بيستهبل"], correct: 3, image: "https://i.ibb.co/1YddzFC2/level04-hands.jpg", extraWinMsg: "يعني حد عنده 11 اصبع ههههه" },
-  { id: 5, question: "الطفل الي لابس اصفر عنده كام سنه", options: ["10", "8", "مش كتير", "5"], correct: 2, image: "https://i.ibb.co/4ZrcTrKg/level05-family-portrait.jpg" },
-  { id: 6, question: "لو القطر الكهربائي الجديد بيمشي بسرعة 368 كيلو متر في الساعه وعكس اتجاه الرياح ومفيش دخان بيطلع منه تتوقع كم سعر كوب الشاي بعد غلاء السكر", options: ["القطر الكهربائي ملهوش دخان", "كوب الشاي زي مهو", "القطر الكهربائي مفهوش شاي", "على حسب كم معلقة سكر"], correct: 1, image: "https://i.ibb.co/rK51WFdP/level06-electric-train.jpg" },
-  { id: 7, question: "طاولة عليها 5 تفاحات، أخذت أنت 3 تفاحات، كم تفاحة معك الآن؟", options: ["2", "3", "5", "ولا واحدة"], correct: 1, image: "https://i.ibb.co/zT9TR8Wh/level07-apples.jpg" },
-  { id: 8, question: "ممر فيه 4 أبواب مغلقة، ما تفسيرك لقيام ثورة الجياع في مدغشقر؟", options: ["غلاء كيلو البانيه", "مفيش علاقه بين الجياع ومدغشقر", "نابليون بونابرت", "ملييش في السياسه"], correct: 3, image: "https://i.ibb.co/RGTVwTSc/level08-doors.jpg" },
-  { id: 9, question: "أيهما أثقل: كيلو من الحديد أم كيلو من القطن؟", options: ["الحديد", "القطن", "متساويان", "حسب الميزان"], correct: 2, image: "https://i.ibb.co/8DMD9xxM/level09-balance-scale.jpg" },
-  { id: 10, question: "كنت في المركز الأخير في سباق وتجاوزت الشخص الذي أمامك مباشرة، ما مركزك الآن؟", options: ["الأول", "الأخير", "المراغة", "الثاني"], correct: 2, image: "https://i.ibb.co/C55nwSTw/level10-runners.jpg" },
-  { id: 11, question: "ديك يقف على قمة بيت مائل، إذا باض بيضة أين ستسقط؟", options: ["يمين", "يسار", "للأسفل", "البيض ما يديك"], correct: 3, image: "https://i.ibb.co/wZTtS1Fb/level11-rooster.jpg" },
-  { id: 12, question: "ما هو الشيء الذي له عين واحدة ولكنه لا يرى أبداً؟", options: ["البومة", "الإبرة", "الإعصار", "الخفاش"], correct: 1, image: "https://i.ibb.co/93gTfJmx/level12-forest-night.jpg" },
-  { id: 13, question: "تحطمت طائرة على الحدود بين دولتين، أين يتم دفن الناجين؟", options: ["الدولة أ", "الدولة ب", "منطقة محايدة", "لا يدفنون"], correct: 3, image: "https://i.ibb.co/2bqDfSQ/level13-airplane-crash.jpg" },
-  { id: 14, question: "سائق حافلة يسير عكس السير ولم توقفه الشرطة، لماذا؟", options: ["الشرطة نائمة", "لأنه يمشي مشياً", "معه واسطة", "الحافلة سريعة"], correct: 1, image: "https://i.ibb.co/SDS0PrPn/level14-bus.jpg" },
-  { id: 15, question: "أي شهر من شهور السنة يحتوي على 28 يوماً؟", options: ["فبراير فقط", "كل 4 سنوات", "كل الشهور", "ديسمبر"], correct: 2, image: "https://i.ibb.co/1GpWgGJy/level15-february.jpg" }
+  { id: 1, question: "لو في سلحفاة دخلت السباق وسبقت المركز الثاني ، ففي أي مركز ستكون؟", options: ["الأول", "الثاني", "الثالث", "الرابع"], correct: 1, image: "images/level01.jpg" },
+  { id: 2, question: "إذا أطفأت شمعتين من أصل 3 في غرفة مغلقة، كم شمعة يتبقى معك؟", options: ["1", "2", "3", "ولا واحدة"], correct: 2, image: "images/level02.jpg" },
+  { id: 3, question: "كم مرة تتطابق عقارب الساعة في اليوم الواحد (24 ساعة)؟", options: ["22", "24", "12", "مرة واحدة"], correct: 0, image: "images/level03.jpg" },
+  { id: 4, question: "يا دكتور الحاله دي وصلت من شويه ممكن تشخصها", options: ["كسر في الكعبرة", "نقص في الرسغ", "زيادة سلاميات", "دا بيستهبل"], correct: 3, image: "images/level04.jpg", extraWinMsg: "يعني حد عنده 11 اصبع ههههه" },
+  { id: 5, question: "الطفل الي لابس اصفر عنده كام سنه", options: ["10", "8", "مش كتير", "5"], correct: 2, image: "images/level05.jpg" },
+  { id: 6, question: "لو القطر الكهربائي الجديد بيمشي بسرعة 368 كيلو متر في الساعه وعكس اتجاه الرياح ومفيش دخان بيطلع منه تتوقع كم سعر كوب الشاي بعد غلاء السكر", options: ["القطر الكهربائي ملهوش دخان", "كوب الشاي زي مهو", "القطر الكهربائي مفهوش شاي", "على حسب كم معلقة سكر"], correct: 1, image: "images/level06.jpg" },
+  { id: 7, question: "طاولة عليها 5 تفاحات، أخذت أنت 3 تفاحات، كم تفاحة معك الآن؟", options: ["2", "3", "5", "ولا واحدة"], correct: 1, image: "images/level07.jpg" },
+  { id: 8, question: "ممر فيه 4 أبواب مغلقة، ما تفسيرك لقيام ثورة الجياع في مدغشقر؟", options: ["غلاء كيلو البانيه", "مفيش علاقه بين الجياع ومدغشقر", "نابليون بونابرت", "ملييش في السياسه"], correct: 3, image: "images/level08.jpg" },
+  { id: 9, question: "أيهما أثقل: كيلو من الحديد أم كيلو من القطن؟", options: ["الحديد", "القطن", "متساويان", "حسب الميزان"], correct: 2, image: "images/level09.jpg" },
+  { id: 10, question: "كنت في المركز الأخير في سباق وتجاوزت الشخص الذي أمامك مباشرة، ما مركزك الآن؟", options: ["الأول", "الأخير", "المراغة", "الثاني"], correct: 2, image: "images/level10.jpg" },
+  { id: 11, question: "ديك يقف على قمة بيت مائل، إذا باض بيضة أين ستسقط؟", options: ["يمين", "يسار", "للأسفل", "البيض ما يديك"], correct: 3, image: "images/level11.jpg" },
+  { id: 12, question: "ما هو الشيء الذي له عين واحدة ولكنه لا يرى أبداً؟", options: ["البومة", "الإبرة", "الإعصار", "الخفاش"], correct: 1, image: "images/level12.jpg" },
+  { id: 13, question: "تحطمت طائرة على الحدود بين دولتين، أين يتم دفن الناجين؟", options: ["الدولة أ", "الدولة ب", "منطقة محايدة", "لا يدفنون"], correct: 3, image: "images/level13.jpg" },
+  { id: 14, question: "سائق حافلة يسير عكس السير ولم توقفه الشرطة، لماذا؟", options: ["الشرطة نائمة", "لأنه يمشي مشياً", "معه واسطة", "الحافلة سريعة"], correct: 1, image: "images/level14.jpg" },
+  { id: 15, question: "أي شهر من شهور السنة يحتوي على 28 يوماً؟", options: ["فبراير فقط", "كل 4 سنوات", "كل الشهور", "ديسمبر"], correct: 2, image: "images/level15.jpg" }
 ];
 
-// عبارات السخرية والتهنئة
 const wrongPhrases = [
   "😂 ههههه غلطان يا فالح!", "🤦‍♂️ لا لا لا يا زميل", "🧠 تفكر نفسك أينشتاين؟", "❌ غلط غلط غلط", "😭 راجع مدرسة ابتدائي", "🤣 معقول؟؟", "💩 إجابة فاشلة"
 ];
@@ -25,16 +23,14 @@ const correctPhrases = [
   "🎉 أحسنت!", "⚡ ذكي!", "👏 صح لسانك", "🧠 برافو عليك", "🏆 عبقري!", "✨ ممتاز!"
 ];
 
-// متغيرات اللعبة
 let currentLevelIndex = 0;
 let hearts = 3;
 let playerName = "";
 let gameActive = true;
 let timerInterval = null;
-let currentTime = 15;   // تم التعديل إلى 15
+let currentTime = 15;
 let waitingForNext = false;
 
-// عناصر DOM
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
 const gameOverOverlay = document.getElementById('gameOverOverlay');
@@ -51,10 +47,8 @@ const feedbackMsg = document.getElementById('feedbackMsg');
 const timerDisplay = document.getElementById('timerDisplay');
 const restartFromGameOverBtn = document.getElementById('restartFromGameOverBtn');
 const restartFromWinBtn = document.getElementById('restartFromWinBtn');
-const winTitle = document.getElementById('winTitle');
 const winStats = document.getElementById('winStats');
 
-// صوت tick
 let audioCtx = null;
 function playTick() {
   try {
@@ -105,7 +99,6 @@ function stopTimer() {
   }
 }
 
-// دالة التايمر المعدلة: 15 ثانية والاهتزاز من 3 ثوانٍ
 function startTimerForCurrentLevel() {
   if (timerInterval) stopTimer();
   currentTime = 15;
@@ -122,7 +115,6 @@ function startTimerForCurrentLevel() {
       timerDisplay.innerText = currentTime;
       playTick();
       vibrate(30);
-      // الاهتزاز واللون الأحمر يبدأ من 3 ثوانٍ أو أقل
       if (currentTime <= 3) {
         timerDisplay.classList.add('timer-danger');
         if (currentTime <= 3) vibrate(60);
@@ -184,7 +176,6 @@ function loadLevel() {
   });
   
   startTimerForCurrentLevel();
-  
   const card = document.querySelector('#gameScreen .glass-card');
   if (card) {
     card.classList.add('level-transition');
@@ -279,6 +270,7 @@ function startGame() {
   gameOverOverlay.classList.add('hidden');
   winOverlay.classList.add('hidden');
   loadLevel();
+  
   if (!audioCtx) {
     document.body.addEventListener('click', () => {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
