@@ -1,29 +1,38 @@
-// script.js
-
-// -------------------- بيانات المراحل مع الصور الحقيقية --------------------
+// -------------------- الأسئلة المعدلة --------------------
 const levelsData = [
-  { id: 1, question: "إذا سبقت السلحفاة صاحب المركز الثاني، ففي أي مركز ستكون؟", options: ["الأول", "الثاني", "الثالث", "الرابع"], correct: 1, image: "https://i.ibb.co/TDXqdZgF/level01-cheetah-race.jpg" },
-  { id: 2, question: "إذا أطفأت شمعتين من أصل 3 في غرفة مغلقة، كم شمعة يتبقى؟", options: ["1", "2", "3", "ولا واحدة"], correct: 2, image: "https://i.ibb.co/LdRzGptw/level02-candles.jpg" },
+  { id: 1, question: "لو في سلحفاة دخلت السباق وسبقت المركز الثاني ، ففي أي مركز ستكون؟", options: ["الأول", "الثاني", "الثالث", "الرابع"], correct: 1, image: "https://i.ibb.co/TDXqdZgF/level01-cheetah-race.jpg" },
+  { id: 2, question: "إذا أطفأت شمعتين من أصل 3 في غرفة مغلقة، كم شمعة يتبقى معك؟", options: ["1", "2", "3", "ولا واحدة"], correct: 1, image: "https://i.ibb.co/LdRzGptw/level02-candles.jpg" }, // 2 شمعة (index 1)
   { id: 3, question: "كم مرة تتطابق عقارب الساعة في اليوم الواحد (24 ساعة)؟", options: ["22", "24", "12", "مرة واحدة"], correct: 0, image: "https://i.ibb.co/wNVfJBHL/level03-clock.jpg" },
-  { id: 4, question: "صورة يدين مرفوعتين أمامك.. كم إصبع تراه في الصورة؟", options: ["10", "20", "8", "12"], correct: 0, image: "https://i.ibb.co/1YddzFC2/level04-hands.jpg" },
-  { id: 5, question: "قال رجل: هذا ابن أبي وليس أخي. فمن يكون الرجل في الصورة؟", options: ["أبوه", "هو نفسه", "ابنه", "عمه"], correct: 1, image: "https://i.ibb.co/4ZrcTrKg/level05-family-portrait.jpg" },
-  { id: 6, question: "سيارة كهربائية تسير شمالاً والرياح جنوباً، إلى أي اتجاه يذهب الدخان؟", options: ["شمال", "جنوب", "لا يوجد دخان", "غرب"], correct: 2, image: "https://i.ibb.co/rK51WFdP/level06-electric-train.jpg" },
+  { id: 4, question: "يا دكتور الحاله دي وصلت من شويه ممكن تشخصها", options: ["كسر في الكعبرة", "نقص في الرسغ", "زيادة سلاميات", "دا بيستهبل"], correct: 3, image: "https://i.ibb.co/1YddzFC2/level04-hands.jpg", extraWinMsg: "يعني حد عنده 11 اصبع ههههه" },
+  { id: 5, question: "الطفل الي لابس اصفر عنده كام سنه", options: ["10", "8", "مش كتير", "5"], correct: 2, image: "https://i.ibb.co/4ZrcTrKg/level05-family-portrait.jpg" },
+  { id: 6, question: "لو القطر الكهربائي الجديد بيمشي بسرعة 368 كيلو متر في الساعه وعكس اتجاه الرياح ومفيش دخان بيطلع منه تتوقع كم سعر كوب الشاي بعد غلاء السكر", options: ["القطر الكهربائي ملهوش دخان", "كوب الشاي زي مهو", "القطر الكهربائي مفهوش شاي", "على حسب كم معلقة سكر"], correct: 1, image: "https://i.ibb.co/rK51WFdP/level06-electric-train.jpg" },
   { id: 7, question: "طاولة عليها 5 تفاحات، أخذت أنت 3 تفاحات، كم تفاحة معك الآن؟", options: ["2", "3", "5", "ولا واحدة"], correct: 1, image: "https://i.ibb.co/zT9TR8Wh/level07-apples.jpg" },
-  { id: 8, question: "ممر فيه 4 أبواب مغلقة، إذا فتحت الباب الثالث، كم باباً يظل مغلقاً؟", options: ["3", "2", "1", "4"], correct: 0, image: "https://i.ibb.co/RGTVwTSc/level08-doors.jpg" },
+  { id: 8, question: "ممر فيه 4 أبواب مغلقة، ما تفسيرك لقيام ثورة الجياع في مدغشقر؟", options: ["غلاء كيلو البانيه", "مفيش علاقه بين الجياع ومدغشقر", "نابليون بونابرت", "ملييش في السياسه"], correct: 3, image: "https://i.ibb.co/RGTVwTSc/level08-doors.jpg" },
   { id: 9, question: "أيهما أثقل: كيلو من الحديد أم كيلو من القطن؟", options: ["الحديد", "القطن", "متساويان", "حسب الميزان"], correct: 2, image: "https://i.ibb.co/8DMD9xxM/level09-balance-scale.jpg" },
-  { id: 10, question: "كنت في المركز الأخير في سباق وتجاوزت الشخص الذي أمامك مباشرة، ما مركزك الآن؟", options: ["الأول", "الأخير", "قبل الأخير", "الثاني"], correct: 2, image: "https://i.ibb.co/C55nwSTw/level10-runners.jpg" },
-  { id: 11, question: "ديك يقف على قمة بيت مائل، إذا باض بيضة أين ستسقط؟", options: ["يمين", "يسار", "للأسفل", "الديك لا يبيض"], correct: 3, image: "https://i.ibb.co/wZTtS1Fb/level11-rooster.jpg" },
+  { id: 10, question: "كنت في المركز الأخير في سباق وتجاوزت الشخص الذي أمامك مباشرة، ما مركزك الآن؟", options: ["الأول", "الأخير", "المراغة", "الثاني"], correct: 2, image: "https://i.ibb.co/C55nwSTw/level10-runners.jpg" },
+  { id: 11, question: "ديك يقف على قمة بيت مائل، إذا باض بيضة أين ستسقط؟", options: ["يمين", "يسار", "للأسفل", "البيض ما يديك"], correct: 3, image: "https://i.ibb.co/wZTtS1Fb/level11-rooster.jpg" },
   { id: 12, question: "ما هو الشيء الذي له عين واحدة ولكنه لا يرى أبداً؟", options: ["البومة", "الإبرة", "الإعصار", "الخفاش"], correct: 1, image: "https://i.ibb.co/93gTfJmx/level12-forest-night.jpg" },
   { id: 13, question: "تحطمت طائرة على الحدود بين دولتين، أين يتم دفن الناجين؟", options: ["الدولة أ", "الدولة ب", "منطقة محايدة", "لا يدفنون"], correct: 3, image: "https://i.ibb.co/2bqDfSQ/level13-airplane-crash.jpg" },
   { id: 14, question: "سائق حافلة يسير عكس السير ولم توقفه الشرطة، لماذا؟", options: ["الشرطة نائمة", "لأنه يمشي مشياً", "معه واسطة", "الحافلة سريعة"], correct: 1, image: "https://i.ibb.co/SDS0PrPn/level14-bus.jpg" },
   { id: 15, question: "أي شهر من شهور السنة يحتوي على 28 يوماً؟", options: ["فبراير فقط", "كل 4 سنوات", "كل الشهور", "ديسمبر"], correct: 2, image: "https://i.ibb.co/1GpWgGJy/level15-february.jpg" }
 ];
 
+// عبارات السخرية والتهنئة
+const wrongPhrases = [
+  "😂 ههههه غلطان يا فالح!", "🤦‍♂️ لا لا لا يا زميل", "🧠 تفكر نفسك أينشتاين؟", "❌ غلط غلط غلط", "😭 راجع مدرسة ابتدائي", "🤣 معقول؟؟", "💩 إجابة فاشلة"
+];
+const correctPhrases = [
+  "🎉 أحسنت!", "⚡ ذكي!", "👏 صح لسانك", "🧠 برافو عليك", "🏆 عبقري!", "✨ ممتاز!"
+];
+
 // متغيرات اللعبة
-let currentLevelIndex = 0;        // 0-index
+let currentLevelIndex = 0;
 let hearts = 3;
 let playerName = "";
-let gameActive = true;             // منع النقر المتعدد أثناء التأثيرات
+let gameActive = true;
+let timerInterval = null;
+let currentTime = 10;
+let waitingForNext = false; // منع النقر أثناء التايمر بعد الإجابة
 
 // عناصر DOM
 const startScreen = document.getElementById('startScreen');
@@ -39,199 +48,279 @@ const questionText = document.getElementById('questionText');
 const optionsContainer = document.getElementById('optionsContainer');
 const levelImage = document.getElementById('levelImage');
 const feedbackMsg = document.getElementById('feedbackMsg');
+const timerDisplay = document.getElementById('timerDisplay');
 const restartFromGameOverBtn = document.getElementById('restartFromGameOverBtn');
 const restartFromWinBtn = document.getElementById('restartFromWinBtn');
+const winTitle = document.getElementById('winTitle');
+const winStats = document.getElementById('winStats');
 
-// مساعد: تحديث عرض القلوب
+// صوت tick (نغمة قصيرة باستخدام Web Audio)
+let audioCtx = null;
+function playTick() {
+  try {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    oscillator.frequency.value = 880;
+    gainNode.gain.value = 0.1;
+    oscillator.start();
+    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.2);
+    oscillator.stop(audioCtx.currentTime + 0.2);
+  } catch(e) { console.log("صوت غير مدعوم"); }
+}
+
+// اهتزاز الشاشة (إذا كان الجهاز يدعم)
+function vibrate(duration = 100) {
+  if (window.navigator && window.navigator.vibrate) {
+    window.navigator.vibrate(duration);
+  }
+}
+
+// تحديث عرض القلوب
 function updateHeartsUI() {
-  let heartsHtml = "";
-  for (let i = 0; i < hearts; i++) heartsHtml += "❤️ ";
-  for (let i = hearts; i < 3; i++) heartsHtml += "🖤 ";
-  heartsContainer.innerHTML = heartsHtml.trim();
+  let html = "";
+  for (let i = 0; i < hearts; i++) html += "❤️ ";
+  for (let i = hearts; i < 3; i++) html += "🖤 ";
+  heartsContainer.innerHTML = html.trim();
 }
 
-// مساعد: تأثير الاهتزاز على البطاقات أو العنصر
-function shakeElement(element) {
-  if (!element) return;
-  element.classList.add('shake-effect');
-  setTimeout(() => {
-    element.classList.remove('shake-effect');
-  }, 500);
+// إظهار رسالة عشوائية للسخرية
+function showRandomWrongMessage() {
+  const randomMsg = wrongPhrases[Math.floor(Math.random() * wrongPhrases.length)];
+  feedbackMsg.innerHTML = `<span class="text-red-400">❌ ${randomMsg}</span>`;
+  setTimeout(() => { if (gameActive && !waitingForNext) feedbackMsg.innerHTML = ''; }, 1500);
 }
 
-// إظهار رسالة الخطأ مع اهتزاز
-function showWrongFeedback() {
-  feedbackMsg.innerHTML = '<span class="text-red-400">❌ إجابة خاطئة! تخسر قلباً ❌</span>';
+function showCorrectMessage(extra = "") {
+  const randomMsg = correctPhrases[Math.floor(Math.random() * correctPhrases.length)];
+  feedbackMsg.innerHTML = `<span class="text-green-400">✅ ${randomMsg} ${extra}</span>`;
   setTimeout(() => { if (gameActive) feedbackMsg.innerHTML = ''; }, 1200);
 }
 
-// إنهاء اللعبة (Game Over)
-function endGame() {
-  gameActive = false;
-  gameOverOverlay.classList.remove('hidden');
+// إيقاف التايمر
+function stopTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
 }
 
-// الفوز بإكمال كل المراحل
-function winGame() {
-  gameActive = false;
-  winOverlay.classList.remove('hidden');
+// بدء التايمر للسؤال الحالي
+function startTimerForCurrentLevel() {
+  if (timerInterval) stopTimer();
+  currentTime = 10;
+  timerDisplay.innerText = currentTime;
+  timerDisplay.classList.remove('timer-danger');
+  
+  timerInterval = setInterval(() => {
+    if (!gameActive || waitingForNext) return;
+    if (currentTime <= 0) {
+      // انتهى الوقت -> خسارة قلب
+      stopTimer();
+      handleTimeout();
+    } else {
+      currentTime--;
+      timerDisplay.innerText = currentTime;
+      playTick();      // صوت كل ثانية
+      vibrate(30);     // اهتزاز خفيف
+      if (currentTime <= 5) {
+        timerDisplay.classList.add('timer-danger');
+        // اهتزاز أقوى عند العد التنازلي الحرج
+        if (currentTime <= 3) vibrate(60);
+        // هز الشاشة (body)
+        document.body.classList.add('shake-effect');
+        setTimeout(() => document.body.classList.remove('shake-effect'), 200);
+      } else {
+        timerDisplay.classList.remove('timer-danger');
+      }
+    }
+  }, 1000);
 }
 
-// إعادة تحميل المرحلة الحالية (عرض السؤال والخيارات والصورة)
+// معالجة انتهاء الوقت
+function handleTimeout() {
+  if (!gameActive || waitingForNext) return;
+  // خسارة قلب
+  hearts--;
+  updateHeartsUI();
+  showRandomWrongMessage();
+  vibrate(200);
+  // هز السؤال
+  const qDiv = document.getElementById('questionText');
+  if (qDiv) qDiv.classList.add('shake-effect');
+  setTimeout(() => qDiv?.classList.remove('shake-effect'), 500);
+  
+  if (hearts <= 0) {
+    gameActive = false;
+    stopTimer();
+    gameOverOverlay.classList.remove('hidden');
+  } else {
+    // إعادة نفس السؤال
+    waitingForNext = true;
+    stopTimer();
+    setTimeout(() => {
+      waitingForNext = false;
+      if (gameActive && hearts > 0) {
+        loadLevel(); // إعادة تحميل نفس السؤال
+      }
+    }, 1500);
+  }
+}
+
+// تحميل المرحلة
 function loadLevel() {
   if (!gameActive) return;
   const level = levelsData[currentLevelIndex];
   if (!level) return;
   
-  // تحديث العداد
   levelCounterSpan.innerText = currentLevelIndex + 1;
-  // السؤال
   questionText.innerText = level.question;
-  // الصورة
   levelImage.src = level.image;
-  levelImage.alt = `صورة المستوى ${level.id}`;
   // توليد الأزرار
   optionsContainer.innerHTML = '';
   level.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
     btn.innerText = opt;
-    btn.className = 'btn-option option-btn w-full text-white text-right md:text-center px-3 py-2 rounded-xl bg-gray-800/70 border border-gray-600 hover:bg-amber-600/30 transition';
+    btn.className = 'option-btn w-full text-white text-right md:text-center px-3 py-2';
     btn.setAttribute('data-opt-index', idx);
     btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (!gameActive) return;
+      e.preventDefault();
+      if (!gameActive || waitingForNext) return;
       handleAnswer(idx, btn);
     });
     optionsContainer.appendChild(btn);
   });
   
-  // إضافة تأثير انتقال بسيط
-  const gameCard = document.querySelector('#gameScreen .glass-card');
-  if (gameCard) {
-    gameCard.classList.add('level-transition');
-    setTimeout(() => gameCard.classList.remove('level-transition'), 300);
+  // إعادة التايمر
+  startTimerForCurrentLevel();
+  
+  // تأثير انتقال
+  const card = document.querySelector('#gameScreen .glass-card');
+  if (card) {
+    card.classList.add('level-transition');
+    setTimeout(() => card.classList.remove('level-transition'), 300);
   }
 }
 
 // معالجة الإجابة
-function handleAnswer(selectedIdx, buttonElement) {
-  if (!gameActive) return;
-  const currentLevel = levelsData[currentLevelIndex];
-  const isCorrect = (selectedIdx === currentLevel.correct);
+function handleAnswer(selectedIdx, btnElement) {
+  if (!gameActive || waitingForNext) return;
+  const level = levelsData[currentLevelIndex];
+  const isCorrect = (selectedIdx === level.correct);
   
   if (isCorrect) {
-    // إجابة صحيحة
-    feedbackMsg.innerHTML = '<span class="text-green-400">✅ إجابة صحيحة! ✅</span>';
-    setTimeout(() => { if (gameActive) feedbackMsg.innerHTML = ''; }, 800);
-    
+    stopTimer();
+    let extraMsg = "";
+    if (level.extraWinMsg) extraMsg = level.extraWinMsg;
+    showCorrectMessage(extraMsg);
+    vibrate(50);
     // الانتقال للمرحلة التالية
     if (currentLevelIndex + 1 < levelsData.length) {
       currentLevelIndex++;
-      loadLevel();
+      waitingForNext = true;
+      setTimeout(() => {
+        waitingForNext = false;
+        loadLevel();
+      }, 1000);
     } else {
-      // وصلنا للمرحلة 15 وأجاب صح → فوز
-      winGame();
+      // فوز كامل
+      gameActive = false;
+      stopTimer();
+      const heartsLost = 3 - hearts;
+      const performance = heartsLost === 0 ? "ممتاز 🔥" : (heartsLost <= 1 ? "جيد جداً 🌟" : (heartsLost <= 2 ? "مقبول 🤔" : "صعب الإرضاء 😅"));
+      winStats.innerHTML = `أنهيت 15 مرحلة 🎉<br>خسرت ${heartsLost} قلوب 💔<br>مستواك: ${performance}`;
+      winOverlay.classList.remove('hidden');
     }
   } else {
     // إجابة خاطئة
     hearts--;
     updateHeartsUI();
-    showWrongFeedback();
-    // تأثير الاهتزاز على الزر الذي تم النقر عليه
-    shakeElement(buttonElement);
-    // اهتزاز بسيط للصورة أو السؤال
-    const questionDiv = document.getElementById('questionText');
-    if (questionDiv) shakeElement(questionDiv);
+    showRandomWrongMessage();
+    vibrate(200);
+    // هز الزر والسؤال
+    btnElement.classList.add('shake-effect');
+    const qDiv = document.getElementById('questionText');
+    if (qDiv) qDiv.classList.add('shake-effect');
+    setTimeout(() => {
+      btnElement.classList.remove('shake-effect');
+      qDiv?.classList.remove('shake-effect');
+    }, 500);
     
     if (hearts <= 0) {
-      // انتهت القلوب
-      updateHeartsUI();
-      endGame();
-    } else {
-      // لا ننتقل للمرحلة التالية، نبقى في نفس المرحلة لكن نعيد عرض نفس السؤال بعد رسالة قصيرة
-      // نعطل النقر مؤقتاً لتجنب السبام
       gameActive = false;
+      stopTimer();
+      gameOverOverlay.classList.remove('hidden');
+    } else {
+      // إعادة نفس السؤال بعد تأخير
+      waitingForNext = true;
+      stopTimer();
       setTimeout(() => {
-        if (hearts > 0 && currentLevelIndex < levelsData.length) {
-          gameActive = true;
-          // إعادة تحميل نفس المرحلة (نفس السؤال)
-          loadLevel();
-        } else if (hearts <= 0) {
-          endGame();
+        waitingForNext = false;
+        if (gameActive && hearts > 0) {
+          loadLevel(); // إعادة نفس المستوى
         }
-      }, 1300);
+      }, 1500);
     }
   }
 }
 
-// إعادة تعيين اللعبة بالكامل من البداية (مع الحفاظ على الاسم)
+// إعادة تعيين كامل
 function fullReset() {
   currentLevelIndex = 0;
   hearts = 3;
   gameActive = true;
+  waitingForNext = false;
+  if (timerInterval) clearInterval(timerInterval);
   updateHeartsUI();
-  // إخفاء أي overlays
   gameOverOverlay.classList.add('hidden');
   winOverlay.classList.add('hidden');
-  // إظهار شاشة اللعب وبدء المرحلة الأولى
   startScreen.classList.add('hidden');
   gameScreen.classList.remove('hidden');
   loadLevel();
 }
 
-// بدء اللعبة من شاشة البداية
+// بدء اللعبة
 function startGame() {
   let name = playerNameInput.value.trim();
-  if (name === "") {
-    name = "العبقري المجهول";
-  }
+  if (name === "") name = "العبقري المجهول";
   playerName = name;
-  // حفظ الاسم في localStorage
   localStorage.setItem('foolPuzzlePlayerName', playerName);
   playerNameDisplay.innerText = playerName;
   
-  // إعادة ضبط المتغيرات
   currentLevelIndex = 0;
   hearts = 3;
   gameActive = true;
+  waitingForNext = false;
   updateHeartsUI();
-  
-  // تبديل الشاشات
   startScreen.classList.add('hidden');
   gameScreen.classList.remove('hidden');
   gameOverOverlay.classList.add('hidden');
   winOverlay.classList.add('hidden');
-  
-  // تحميل أول مرحلة
   loadLevel();
-}
-
-// استرجاع الاسم من localStorage عند تحميل الصفحة
-function loadStoredName() {
-  const saved = localStorage.getItem('foolPuzzlePlayerName');
-  if (saved) {
-    playerNameInput.value = saved;
+  // تفعيل الصوت بعد أول تفاعل (لأن AudioContext يحتاج user gesture)
+  if (!audioCtx) {
+    document.body.addEventListener('click', () => {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }, { once: true });
   }
 }
 
-// إعادة المحاولة من زر Game Over أو Win
-function restartGame() {
-  fullReset();
+// استرجاع الاسم
+function loadStoredName() {
+  const saved = localStorage.getItem('foolPuzzlePlayerName');
+  if (saved) playerNameInput.value = saved;
 }
 
 // الأحداث
 startBtn.addEventListener('click', startGame);
-restartFromGameOverBtn.addEventListener('click', () => {
-  fullReset();
-});
-restartFromWinBtn.addEventListener('click', () => {
-  fullReset();
-});
-
-// منع النقر على الأزرار أثناء التأثيرات الثانوية (يتم التعامل مع gameActive)
+restartFromGameOverBtn.addEventListener('click', fullReset);
+restartFromWinBtn.addEventListener('click', fullReset);
 window.addEventListener('load', () => {
   loadStoredName();
-  // التأكد من ظهور شاشة البداية فقط
   startScreen.classList.remove('hidden');
   gameScreen.classList.add('hidden');
   gameOverOverlay.classList.add('hidden');
