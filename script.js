@@ -1,7 +1,7 @@
 // -------------------- الأسئلة المعدلة --------------------
 const levelsData = [
   { id: 1, question: "لو في سلحفاة دخلت السباق وسبقت المركز الثاني ، ففي أي مركز ستكون؟", options: ["الأول", "الثاني", "الثالث", "الرابع"], correct: 1, image: "https://i.ibb.co/TDXqdZgF/level01-cheetah-race.jpg" },
-  { id: 2, question: "إذا أطفأت شمعتين من أصل 3 في غرفة مغلقة، كم شمعة يتبقى معك؟", options: ["1", "2", "3", "ولا واحدة"], correct: 1, image: "https://i.ibb.co/LdRzGptw/level02-candles.jpg" }, // 2 شمعة (index 1)
+  { id: 2, question: "إذا أطفأت شمعتين من أصل 3 في غرفة مغلقة، كم شمعة يتبقى معك؟", options: ["1", "2", "3", "ولا واحدة"], correct: 2, image: "https://i.ibb.co/LdRzGptw/level02-candles.jpg" }, // الإجابة الصحيحة هي 3 (index 2)
   { id: 3, question: "كم مرة تتطابق عقارب الساعة في اليوم الواحد (24 ساعة)؟", options: ["22", "24", "12", "مرة واحدة"], correct: 0, image: "https://i.ibb.co/wNVfJBHL/level03-clock.jpg" },
   { id: 4, question: "يا دكتور الحاله دي وصلت من شويه ممكن تشخصها", options: ["كسر في الكعبرة", "نقص في الرسغ", "زيادة سلاميات", "دا بيستهبل"], correct: 3, image: "https://i.ibb.co/1YddzFC2/level04-hands.jpg", extraWinMsg: "يعني حد عنده 11 اصبع ههههه" },
   { id: 5, question: "الطفل الي لابس اصفر عنده كام سنه", options: ["10", "8", "مش كتير", "5"], correct: 2, image: "https://i.ibb.co/4ZrcTrKg/level05-family-portrait.jpg" },
@@ -31,8 +31,8 @@ let hearts = 3;
 let playerName = "";
 let gameActive = true;
 let timerInterval = null;
-let currentTime = 10;
-let waitingForNext = false; // منع النقر أثناء التايمر بعد الإجابة
+let currentTime = 15;   // تم التعديل إلى 15
+let waitingForNext = false;
 
 // عناصر DOM
 const startScreen = document.getElementById('startScreen');
@@ -54,7 +54,7 @@ const restartFromWinBtn = document.getElementById('restartFromWinBtn');
 const winTitle = document.getElementById('winTitle');
 const winStats = document.getElementById('winStats');
 
-// صوت tick (نغمة قصيرة باستخدام Web Audio)
+// صوت tick
 let audioCtx = null;
 function playTick() {
   try {
@@ -73,14 +73,12 @@ function playTick() {
   } catch(e) { console.log("صوت غير مدعوم"); }
 }
 
-// اهتزاز الشاشة (إذا كان الجهاز يدعم)
 function vibrate(duration = 100) {
   if (window.navigator && window.navigator.vibrate) {
     window.navigator.vibrate(duration);
   }
 }
 
-// تحديث عرض القلوب
 function updateHeartsUI() {
   let html = "";
   for (let i = 0; i < hearts; i++) html += "❤️ ";
@@ -88,7 +86,6 @@ function updateHeartsUI() {
   heartsContainer.innerHTML = html.trim();
 }
 
-// إظهار رسالة عشوائية للسخرية
 function showRandomWrongMessage() {
   const randomMsg = wrongPhrases[Math.floor(Math.random() * wrongPhrases.length)];
   feedbackMsg.innerHTML = `<span class="text-red-400">❌ ${randomMsg}</span>`;
@@ -101,7 +98,6 @@ function showCorrectMessage(extra = "") {
   setTimeout(() => { if (gameActive) feedbackMsg.innerHTML = ''; }, 1200);
 }
 
-// إيقاف التايمر
 function stopTimer() {
   if (timerInterval) {
     clearInterval(timerInterval);
@@ -109,29 +105,27 @@ function stopTimer() {
   }
 }
 
-// بدء التايمر للسؤال الحالي
+// دالة التايمر المعدلة: 15 ثانية والاهتزاز من 3 ثوانٍ
 function startTimerForCurrentLevel() {
   if (timerInterval) stopTimer();
-  currentTime = 10;
+  currentTime = 15;
   timerDisplay.innerText = currentTime;
   timerDisplay.classList.remove('timer-danger');
   
   timerInterval = setInterval(() => {
     if (!gameActive || waitingForNext) return;
     if (currentTime <= 0) {
-      // انتهى الوقت -> خسارة قلب
       stopTimer();
       handleTimeout();
     } else {
       currentTime--;
       timerDisplay.innerText = currentTime;
-      playTick();      // صوت كل ثانية
-      vibrate(30);     // اهتزاز خفيف
-      if (currentTime <= 5) {
+      playTick();
+      vibrate(30);
+      // الاهتزاز واللون الأحمر يبدأ من 3 ثوانٍ أو أقل
+      if (currentTime <= 3) {
         timerDisplay.classList.add('timer-danger');
-        // اهتزاز أقوى عند العد التنازلي الحرج
         if (currentTime <= 3) vibrate(60);
-        // هز الشاشة (body)
         document.body.classList.add('shake-effect');
         setTimeout(() => document.body.classList.remove('shake-effect'), 200);
       } else {
@@ -141,15 +135,12 @@ function startTimerForCurrentLevel() {
   }, 1000);
 }
 
-// معالجة انتهاء الوقت
 function handleTimeout() {
   if (!gameActive || waitingForNext) return;
-  // خسارة قلب
   hearts--;
   updateHeartsUI();
   showRandomWrongMessage();
   vibrate(200);
-  // هز السؤال
   const qDiv = document.getElementById('questionText');
   if (qDiv) qDiv.classList.add('shake-effect');
   setTimeout(() => qDiv?.classList.remove('shake-effect'), 500);
@@ -159,19 +150,17 @@ function handleTimeout() {
     stopTimer();
     gameOverOverlay.classList.remove('hidden');
   } else {
-    // إعادة نفس السؤال
     waitingForNext = true;
     stopTimer();
     setTimeout(() => {
       waitingForNext = false;
       if (gameActive && hearts > 0) {
-        loadLevel(); // إعادة تحميل نفس السؤال
+        loadLevel();
       }
     }, 1500);
   }
 }
 
-// تحميل المرحلة
 function loadLevel() {
   if (!gameActive) return;
   const level = levelsData[currentLevelIndex];
@@ -180,7 +169,6 @@ function loadLevel() {
   levelCounterSpan.innerText = currentLevelIndex + 1;
   questionText.innerText = level.question;
   levelImage.src = level.image;
-  // توليد الأزرار
   optionsContainer.innerHTML = '';
   level.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
@@ -195,10 +183,8 @@ function loadLevel() {
     optionsContainer.appendChild(btn);
   });
   
-  // إعادة التايمر
   startTimerForCurrentLevel();
   
-  // تأثير انتقال
   const card = document.querySelector('#gameScreen .glass-card');
   if (card) {
     card.classList.add('level-transition');
@@ -206,7 +192,6 @@ function loadLevel() {
   }
 }
 
-// معالجة الإجابة
 function handleAnswer(selectedIdx, btnElement) {
   if (!gameActive || waitingForNext) return;
   const level = levelsData[currentLevelIndex];
@@ -218,7 +203,6 @@ function handleAnswer(selectedIdx, btnElement) {
     if (level.extraWinMsg) extraMsg = level.extraWinMsg;
     showCorrectMessage(extraMsg);
     vibrate(50);
-    // الانتقال للمرحلة التالية
     if (currentLevelIndex + 1 < levelsData.length) {
       currentLevelIndex++;
       waitingForNext = true;
@@ -227,7 +211,6 @@ function handleAnswer(selectedIdx, btnElement) {
         loadLevel();
       }, 1000);
     } else {
-      // فوز كامل
       gameActive = false;
       stopTimer();
       const heartsLost = 3 - hearts;
@@ -236,12 +219,10 @@ function handleAnswer(selectedIdx, btnElement) {
       winOverlay.classList.remove('hidden');
     }
   } else {
-    // إجابة خاطئة
     hearts--;
     updateHeartsUI();
     showRandomWrongMessage();
     vibrate(200);
-    // هز الزر والسؤال
     btnElement.classList.add('shake-effect');
     const qDiv = document.getElementById('questionText');
     if (qDiv) qDiv.classList.add('shake-effect');
@@ -255,20 +236,18 @@ function handleAnswer(selectedIdx, btnElement) {
       stopTimer();
       gameOverOverlay.classList.remove('hidden');
     } else {
-      // إعادة نفس السؤال بعد تأخير
       waitingForNext = true;
       stopTimer();
       setTimeout(() => {
         waitingForNext = false;
         if (gameActive && hearts > 0) {
-          loadLevel(); // إعادة نفس المستوى
+          loadLevel();
         }
       }, 1500);
     }
   }
 }
 
-// إعادة تعيين كامل
 function fullReset() {
   currentLevelIndex = 0;
   hearts = 3;
@@ -283,7 +262,6 @@ function fullReset() {
   loadLevel();
 }
 
-// بدء اللعبة
 function startGame() {
   let name = playerNameInput.value.trim();
   if (name === "") name = "العبقري المجهول";
@@ -301,7 +279,6 @@ function startGame() {
   gameOverOverlay.classList.add('hidden');
   winOverlay.classList.add('hidden');
   loadLevel();
-  // تفعيل الصوت بعد أول تفاعل (لأن AudioContext يحتاج user gesture)
   if (!audioCtx) {
     document.body.addEventListener('click', () => {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -309,13 +286,11 @@ function startGame() {
   }
 }
 
-// استرجاع الاسم
 function loadStoredName() {
   const saved = localStorage.getItem('foolPuzzlePlayerName');
   if (saved) playerNameInput.value = saved;
 }
 
-// الأحداث
 startBtn.addEventListener('click', startGame);
 restartFromGameOverBtn.addEventListener('click', fullReset);
 restartFromWinBtn.addEventListener('click', fullReset);
