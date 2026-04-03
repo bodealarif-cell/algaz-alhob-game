@@ -1,21 +1,23 @@
+// -------------------- الأسئلة المعدلة (المسار: image/) --------------------
 const levelsData = [
-  { id: 1, question: "لو في سلحفاة دخلت السباق وسبقت المركز الثاني ، ففي أي مركز ستكون؟", options: ["الأول", "الثاني", "الثالث", "الرابع"], correct: 1, image: "images/level01.jpg" },
-  { id: 2, question: "إذا أطفأت شمعتين من أصل 3 في غرفة مغلقة، كم شمعة يتبقى معك؟", options: ["1", "2", "3", "ولا واحدة"], correct: 2, image: "images/level02.jpg" },
-  { id: 3, question: "كم مرة تتطابق عقارب الساعة في اليوم الواحد (24 ساعة)؟", options: ["22", "24", "12", "مرة واحدة"], correct: 0, image: "images/level03.jpg" },
-  { id: 4, question: "يا دكتور الحاله دي وصلت من شويه ممكن تشخصها", options: ["كسر في الكعبرة", "نقص في الرسغ", "زيادة سلاميات", "دا بيستهبل"], correct: 3, image: "images/level04.jpg", extraWinMsg: "يعني حد عنده 11 اصبع ههههه" },
-  { id: 5, question: "الطفل الي لابس اصفر عنده كام سنه", options: ["10", "8", "مش كتير", "5"], correct: 2, image: "images/level05.jpg" },
-  { id: 6, question: "لو القطر الكهربائي الجديد بيمشي بسرعة 368 كيلو متر في الساعه وعكس اتجاه الرياح ومفيش دخان بيطلع منه تتوقع كم سعر كوب الشاي بعد غلاء السكر", options: ["القطر الكهربائي ملهوش دخان", "كوب الشاي زي مهو", "القطر الكهربائي مفهوش شاي", "على حسب كم معلقة سكر"], correct: 1, image: "images/level06.jpg" },
-  { id: 7, question: "طاولة عليها 5 تفاحات، أخذت أنت 3 تفاحات، كم تفاحة معك الآن؟", options: ["2", "3", "5", "ولا واحدة"], correct: 1, image: "images/level07.jpg" },
-  { id: 8, question: "ممر فيه 4 أبواب مغلقة، ما تفسيرك لقيام ثورة الجياع في مدغشقر؟", options: ["غلاء كيلو البانيه", "مفيش علاقه بين الجياع ومدغشقر", "نابليون بونابرت", "ملييش في السياسه"], correct: 3, image: "images/level08.jpg" },
-  { id: 9, question: "أيهما أثقل: كيلو من الحديد أم كيلو من القطن؟", options: ["الحديد", "القطن", "متساويان", "حسب الميزان"], correct: 2, image: "images/level09.jpg" },
-  { id: 10, question: "كنت في المركز الأخير في سباق وتجاوزت الشخص الذي أمامك مباشرة، ما مركزك الآن؟", options: ["الأول", "الأخير", "المراغة", "الثاني"], correct: 2, image: "images/level10.jpg" },
-  { id: 11, question: "ديك يقف على قمة بيت مائل، إذا باض بيضة أين ستسقط؟", options: ["يمين", "يسار", "للأسفل", "البيض ما يديك"], correct: 3, image: "images/level11.jpg" },
-  { id: 12, question: "ما هو الشيء الذي له عين واحدة ولكنه لا يرى أبداً؟", options: ["البومة", "الإبرة", "الإعصار", "الخفاش"], correct: 1, image: "images/level12.jpg" },
-  { id: 13, question: "تحطمت طائرة على الحدود بين دولتين، أين يتم دفن الناجين؟", options: ["الدولة أ", "الدولة ب", "منطقة محايدة", "لا يدفنون"], correct: 3, image: "images/level13.jpg" },
-  { id: 14, question: "سائق حافلة يسير عكس السير ولم توقفه الشرطة، لماذا؟", options: ["الشرطة نائمة", "لأنه يمشي مشياً", "معه واسطة", "الحافلة سريعة"], correct: 1, image: "images/level14.jpg" },
-  { id: 15, question: "أي شهر من شهور السنة يحتوي على 28 يوماً؟", options: ["فبراير فقط", "كل 4 سنوات", "كل الشهور", "ديسمبر"], correct: 2, image: "images/level15.jpg" }
+  { id: 1, question: "لو في سلحفاة دخلت السباق وسبقت المركز الثاني ، ففي أي مركز ستكون؟", options: ["الأول", "الثاني", "الثالث", "الرابع"], correct: 1, image: "image/level01.jpg" },
+  { id: 2, question: "إذا أطفأت شمعتين من أصل 3 في غرفة مغلقة، كم شمعة يتبقى معك؟", options: ["1", "2", "3", "ولا واحدة"], correct: 2, image: "image/level02.jpg" },
+  { id: 3, question: "كم مرة تتطابق عقارب الساعة في اليوم الواحد (24 ساعة)؟", options: ["22", "24", "12", "مرة واحدة"], correct: 0, image: "image/level03.jpg" },
+  { id: 4, question: "يا دكتور الحاله دي وصلت من شويه ممكن تشخصها", options: ["كسر في الكعبرة", "نقص في الرسغ", "زيادة سلاميات", "دا بيستهبل"], correct: 3, image: "image/level04.jpg", extraWinMsg: "يعني حد عنده 11 اصبع ههههه" },
+  { id: 5, question: "الطفل الي لابس اصفر عنده كام سنه", options: ["10", "8", "مش كتير", "5"], correct: 2, image: "image/level05.jpg" },
+  { id: 6, question: "لو القطر الكهربائي الجديد بيمشي بسرعة 368 كيلو متر في الساعه وعكس اتجاه الرياح ومفيش دخان بيطلع منه تتوقع كم سعر كوب الشاي بعد غلاء السكر", options: ["القطر الكهربائي ملهوش دخان", "كوب الشاي زي مهو", "القطر الكهربائي مفهوش شاي", "على حسب كم معلقة سكر"], correct: 1, image: "image/level06.jpg" },
+  { id: 7, question: "طاولة عليها 5 تفاحات، أخذت أنت 3 تفاحات، كم تفاحة معك الآن؟", options: ["2", "3", "5", "ولا واحدة"], correct: 1, image: "image/level07.jpg" },
+  { id: 8, question: "ممر فيه 4 أبواب مغلقة، ما تفسيرك لقيام ثورة الجياع في مدغشقر؟", options: ["غلاء كيلو البانيه", "مفيش علاقه بين الجياع ومدغشقر", "نابليون بونابرت", "ملييش في السياسه"], correct: 3, image: "image/level08.jpg" },
+  { id: 9, question: "أيهما أثقل: كيلو من الحديد أم كيلو من القطن؟", options: ["الحديد", "القطن", "متساويان", "حسب الميزان"], correct: 2, image: "image/level09.jpg" },
+  { id: 10, question: "كنت في المركز الأخير في سباق وتجاوزت الشخص الذي أمامك مباشرة، ما مركزك الآن؟", options: ["الأول", "الأخير", "المراغة", "الثاني"], correct: 2, image: "image/level10.jpg" },
+  { id: 11, question: "ديك يقف على قمة بيت مائل، إذا باض بيضة أين ستسقط؟", options: ["يمين", "يسار", "للأسفل", "البيض ما يديك"], correct: 3, image: "image/level11.jpg" },
+  { id: 12, question: "ما هو الشيء الذي له عين واحدة ولكنه لا يرى أبداً؟", options: ["البومة", "الإبرة", "الإعصار", "الخفاش"], correct: 1, image: "image/level12.jpg" },
+  { id: 13, question: "تحطمت طائرة على الحدود بين دولتين، أين يتم دفن الناجين؟", options: ["الدولة أ", "الدولة ب", "منطقة محايدة", "لا يدفنون"], correct: 3, image: "image/level13.jpg" },
+  { id: 14, question: "سائق حافلة يسير عكس السير ولم توقفه الشرطة، لماذا؟", options: ["الشرطة نائمة", "لأنه يمشي مشياً", "معه واسطة", "الحافلة سريعة"], correct: 1, image: "image/level14.jpg" },
+  { id: 15, question: "أي شهر من شهور السنة يحتوي على 28 يوماً؟", options: ["فبراير فقط", "كل 4 سنوات", "كل الشهور", "ديسمبر"], correct: 2, image: "image/level15.jpg" }
 ];
 
+// -------------------- عبارات السخرية والتهنئة --------------------
 const wrongPhrases = [
   "😂 ههههه غلطان يا فالح!", "🤦‍♂️ لا لا لا يا زميل", "🧠 تفكر نفسك أينشتاين؟", "❌ غلط غلط غلط", "😭 راجع مدرسة ابتدائي", "🤣 معقول؟؟", "💩 إجابة فاشلة"
 ];
@@ -23,6 +25,7 @@ const correctPhrases = [
   "🎉 أحسنت!", "⚡ ذكي!", "👏 صح لسانك", "🧠 برافو عليك", "🏆 عبقري!", "✨ ممتاز!"
 ];
 
+// -------------------- متغيرات اللعبة --------------------
 let currentLevelIndex = 0;
 let hearts = 3;
 let playerName = "";
@@ -31,6 +34,7 @@ let timerInterval = null;
 let currentTime = 15;
 let waitingForNext = false;
 
+// -------------------- عناصر DOM --------------------
 const startScreen = document.getElementById('startScreen');
 const gameScreen = document.getElementById('gameScreen');
 const gameOverOverlay = document.getElementById('gameOverOverlay');
@@ -49,6 +53,7 @@ const restartFromGameOverBtn = document.getElementById('restartFromGameOverBtn')
 const restartFromWinBtn = document.getElementById('restartFromWinBtn');
 const winStats = document.getElementById('winStats');
 
+// -------------------- صوت التايمر --------------------
 let audioCtx = null;
 function playTick() {
   try {
@@ -67,12 +72,14 @@ function playTick() {
   } catch(e) { console.log("صوت غير مدعوم"); }
 }
 
+// -------------------- اهتزاز الجهاز --------------------
 function vibrate(duration = 100) {
   if (window.navigator && window.navigator.vibrate) {
     window.navigator.vibrate(duration);
   }
 }
 
+// -------------------- تحديث واجهة القلوب --------------------
 function updateHeartsUI() {
   let html = "";
   for (let i = 0; i < hearts; i++) html += "❤️ ";
@@ -80,6 +87,7 @@ function updateHeartsUI() {
   heartsContainer.innerHTML = html.trim();
 }
 
+// -------------------- رسائل عشوائية --------------------
 function showRandomWrongMessage() {
   const randomMsg = wrongPhrases[Math.floor(Math.random() * wrongPhrases.length)];
   feedbackMsg.innerHTML = `<span class="text-red-400">❌ ${randomMsg}</span>`;
@@ -92,6 +100,7 @@ function showCorrectMessage(extra = "") {
   setTimeout(() => { if (gameActive) feedbackMsg.innerHTML = ''; }, 1200);
 }
 
+// -------------------- التحكم بالتايمر --------------------
 function stopTimer() {
   if (timerInterval) {
     clearInterval(timerInterval);
@@ -127,6 +136,7 @@ function startTimerForCurrentLevel() {
   }, 1000);
 }
 
+// -------------------- انتهاء الوقت --------------------
 function handleTimeout() {
   if (!gameActive || waitingForNext) return;
   hearts--;
@@ -153,6 +163,7 @@ function handleTimeout() {
   }
 }
 
+// -------------------- تحميل المرحلة الحالية --------------------
 function loadLevel() {
   if (!gameActive) return;
   const level = levelsData[currentLevelIndex];
@@ -161,6 +172,7 @@ function loadLevel() {
   levelCounterSpan.innerText = currentLevelIndex + 1;
   questionText.innerText = level.question;
   levelImage.src = level.image;
+  levelImage.alt = `صورة المستوى ${level.id}`;
   optionsContainer.innerHTML = '';
   level.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
@@ -183,6 +195,7 @@ function loadLevel() {
   }
 }
 
+// -------------------- معالجة الإجابة --------------------
 function handleAnswer(selectedIdx, btnElement) {
   if (!gameActive || waitingForNext) return;
   const level = levelsData[currentLevelIndex];
@@ -239,6 +252,7 @@ function handleAnswer(selectedIdx, btnElement) {
   }
 }
 
+// -------------------- إعادة تعيين اللعبة بالكامل --------------------
 function fullReset() {
   currentLevelIndex = 0;
   hearts = 3;
@@ -253,6 +267,7 @@ function fullReset() {
   loadLevel();
 }
 
+// -------------------- بدء اللعبة من شاشة البداية --------------------
 function startGame() {
   let name = playerNameInput.value.trim();
   if (name === "") name = "العبقري المجهول";
@@ -278,14 +293,17 @@ function startGame() {
   }
 }
 
+// -------------------- استرجاع الاسم من localStorage --------------------
 function loadStoredName() {
   const saved = localStorage.getItem('foolPuzzlePlayerName');
   if (saved) playerNameInput.value = saved;
 }
 
+// -------------------- ربط الأحداث --------------------
 startBtn.addEventListener('click', startGame);
 restartFromGameOverBtn.addEventListener('click', fullReset);
 restartFromWinBtn.addEventListener('click', fullReset);
+
 window.addEventListener('load', () => {
   loadStoredName();
   startScreen.classList.remove('hidden');
